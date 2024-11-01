@@ -88,7 +88,6 @@ jobs:
           domain: oss.nsimg.cn
           update-domains: |
            oss.nsimg.cn| https | http2
-           oss.nsimg.cn | https | http2
           debug: 'yes'
           cert-path: '${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}'
           key-path: '${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}'
