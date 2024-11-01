@@ -69,7 +69,7 @@ jobs:
           ACME_SH_TEMP_FILE_KEY="$ACME_SH_TEMP_DIR/key.pem"
 
           # 不要忘记修改这里的 -d 参数值为上方的第一个域名
-          ~/.acme.sh/acme.sh --install-cert -d "nsimg.cn" --fullchain-file "$ACME_SH_TEMP_FILE_FULLCHAIN" --key-file "$ACME_SH_TEMP_FILE_KEY"
+          ~/.acme.sh/acme.sh --install-cert -d "oss.nsimg.cn" --fullchain-file "$ACME_SH_TEMP_FILE_FULLCHAIN" --key-file "$ACME_SH_TEMP_FILE_KEY"
 
           [[ -z "$ACME_SH_OUTPUT_FULLCHAIN" ]] || (mkdir -p "$(dirname "$ACME_SH_OUTPUT_FULLCHAIN")" && cp "$ACME_SH_TEMP_FILE_FULLCHAIN" "$ACME_SH_OUTPUT_FULLCHAIN")
           [[ -z "$ACME_SH_OUTPUT_KEY" ]] || (mkdir -p "$(dirname "$ACME_SH_OUTPUT_KEY")" && cp "$ACME_SH_TEMP_FILE_KEY" "$ACME_SH_OUTPUT_KEY")
