@@ -56,8 +56,8 @@ jobs:
       - name: Issue SSL certificates
         shell: bash
         run: |
-          ~/.acme.sh/acme.sh --issue            \
-            -d "nsimg.cn" -d "*.nsimg.cn" \
+          ~/.acme.sh/acme.sh --issue \
+            -d "oss.nsimg.cn" \
             --dns dns_cf --server letsencrypt
 
       # 导出证书
@@ -85,10 +85,10 @@ jobs:
         with:
           ak: ${{ secrets.QINIU_AK }}
           sk: ${{ secrets.QINIU_SK }}
-          domain: aprdec.top
+          domain: oss.nsimg.cn
           update-domains: |
-           qncdn.aprdec.top| https | http2
-           qiniu.aprdec.top | https | http2
+           oss.nsimg.cn| https | http2
+           oss.nsimg.cn | https | http2
           debug: 'yes'
-          cert-path: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}
-          key-path: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}
+          cert-path: '${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}'
+          key-path: '${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}'
