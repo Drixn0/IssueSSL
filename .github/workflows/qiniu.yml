@@ -1,5 +1,5 @@
 # 名称
-name: Issue SSL Certificates
+name: Issue SSL to Qiniu
 
 # 触发条件
 on:
