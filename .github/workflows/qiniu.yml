@@ -58,7 +58,7 @@ jobs:
         run: |
           ~/.acme.sh/acme.sh --issue            \
             -d "nsimg.cn" -d "*.nsimg.cn" \
-            --dns dns_cf --server google
+            --dns dns_cf --server letsencrypt
 
       # 导出证书
       - name: Copy certificate to output paths
