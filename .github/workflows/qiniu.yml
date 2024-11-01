@@ -15,7 +15,7 @@ env:
   # Checkout 到的目录
   CERTS_OUTPUT_BASE: certs
   # 证书输出目录
-  CERTS_OUTPUT_DIRECTORY: nsimg.cn
+  CERTS_OUTPUT_DIRECTORY: oss.nsimg.cn
   # 证书文件名
   FILE_FULLCHAIN: fullchain.pem
   # 私钥文件名
