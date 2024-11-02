@@ -57,7 +57,7 @@ jobs:
         shell: bash
         run: |
           ~/.acme.sh/acme.sh --issue \
-            -d "oss.nsimg.cn" \
+            -d "oss.nsimg.cn" -d "obb.nsimg.cn"\
             --dns dns_cf --server letsencrypt
 
       # 导出证书
@@ -100,9 +100,10 @@ jobs:
         with:
           ak: ${{ secrets.QINIU_AK }}
           sk: ${{ secrets.QINIU_SK }}
-          domain: oss.nsimg.cn
+          domain: oss.nsimg.cn,obb.nsimg.cn
           update-domains: |
            oss.nsimg.cn| https | http2
+           obb.nsimg.cn| https | http2
           debug: 'yes'
           cert-path: '${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}'
           key-path: '${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}'
