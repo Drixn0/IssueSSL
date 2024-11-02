@@ -80,6 +80,21 @@ jobs:
           ACME_SH_OUTPUT_KEY: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}
 
       # 上传证书
+      - name: Push to GitHub
+        run: |
+          git config --global user.name "BaoshuoBot"
+          git config --global user.email "79077260+BaoshuoBot@users.noreply.github.com"
+
+          cd "$CERTS_DIRECTORY"
+
+          git add "$FILE_FULLCHAIN" "$FILE_KEY"
+          git commit -m "Upload certificates on $(date '+%Y-%m-%d %H:%M:%S')"
+          git push
+        env:
+          TZ: Asia/Shanghai
+          CERTS_DIRECTORY: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}
+
+      # 上传证书
       - name: Push to qiniu
         uses: foxundermoon/upload-qiniu-cert-action@master
         with:
