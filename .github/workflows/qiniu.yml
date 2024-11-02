@@ -82,8 +82,8 @@ jobs:
       # 上传证书
       - name: Push to GitHub
         run: |
-          git config --global user.name "BaoshuoBot"
-          git config --global user.email "79077260+BaoshuoBot@users.noreply.github.com"
+          git config --global user.name $(git show -s --format='%an' HEAD)
+          git config --global user.email $(git show -s --format='%ae' HEAD)
 
           cd "$CERTS_DIRECTORY"
 
