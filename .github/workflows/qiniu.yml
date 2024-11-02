@@ -1,5 +1,5 @@
 # 名称
-name: Issue SSL to Qiniu
+name: Issue SSL certificate to Qiniu
 
 # 触发条件
 on:
@@ -24,7 +24,7 @@ env:
 jobs:
   issue-ssl-certificate:
     # 申请证书并 push 到 certs 分支
-    name: Push SSL certificate
+    name: Push certificate to certs branch
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -53,7 +53,7 @@ jobs:
           ACME_SH_ACCOUNT_TAR: ${{ secrets.ACME_SH_ACCOUNT_TAR }}
 
       # 申请证书
-      - name: Issue SSL certificates
+      - name: Issue certificates
         shell: bash
         run: |
           ~/.acme.sh/acme.sh --issue \
@@ -79,8 +79,8 @@ jobs:
           ACME_SH_OUTPUT_FULLCHAIN: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_FULLCHAIN }}
           ACME_SH_OUTPUT_KEY: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}/${{ env.FILE_KEY }}
 
-      # 上传证书
-      - name: Push to GitHub
+      # 上传证书至GitHub
+      - name: Push certificate to GitHub
         run: |
           git config --global user.name "BaoshuoBot"
           git config --global user.email "79077260+BaoshuoBot@users.noreply.github.com"
@@ -94,8 +94,8 @@ jobs:
           TZ: Asia/Shanghai
           CERTS_DIRECTORY: ${{ env.CERTS_OUTPUT_BASE }}/${{ env.CERTS_OUTPUT_DIRECTORY }}
 
-      # 上传证书
-      - name: Push to qiniu
+      # 上传证书至七牛云
+      - name: Push certificate to Qiniu
         uses: foxundermoon/upload-qiniu-cert-action@master
         with:
           ak: ${{ secrets.QINIU_AK }}
